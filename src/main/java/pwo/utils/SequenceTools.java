@@ -18,7 +18,11 @@ public class SequenceTools {
             stop = from;
         }
         while (true) {
-            terms += sg.getTerm(i) + sep;
+            if(from < to) {
+                terms += sg.getTerm(i) + sep;
+            } else {
+                terms = sg.getTerm(i) + sep + terms;
+            }
             if (i == stop) {
                 return terms.trim();
             }
