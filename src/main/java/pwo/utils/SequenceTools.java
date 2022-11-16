@@ -8,14 +8,21 @@ public class SequenceTools {
 
     private static String getTerms(SequenceGenerator sg,
             int from, int to, String sep) {
-        int i = from, stop = to, step = from > to ? -1 : 1;
+        int i, stop;
         String terms = "";
+        if(from < to) {
+            i = from;
+            stop = to;
+        } else {
+            i = to;
+            stop = from;
+        }
         while (true) {
             terms += sg.getTerm(i) + sep;
             if (i == stop) {
                 return terms.trim();
             }
-            i += step;
+            i++;
         }
     }
 
